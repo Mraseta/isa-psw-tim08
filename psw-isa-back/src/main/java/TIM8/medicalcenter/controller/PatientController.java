@@ -4,6 +4,7 @@ import TIM8.medicalcenter.dto.PatientDTO;
 import TIM8.medicalcenter.model.Users.Patient;
 import TIM8.medicalcenter.model.Users.Person;
 import TIM8.medicalcenter.service.PersonService;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,6 @@ public class PatientController {
     @Autowired
     private PersonService personService;
 
-
-   
     @GetMapping
     public ResponseEntity<List<PatientDTO>> getPatients() {
         List<Person> patientList = personService.findByType("P");
