@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormsModule, EmailValidator } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

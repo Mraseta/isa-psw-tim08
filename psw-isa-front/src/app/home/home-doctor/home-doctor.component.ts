@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { PatientService } from 'src/app/services/patient.service';
+import { PatientService } from 'src/app/services/patient/patient.service';
 
 @Component({
   selector: 'app-home-doctor',

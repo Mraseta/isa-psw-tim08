@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VacationService } from '../services/vacation.service';
+import { VacationService } from '../services/vacation/vacation.service';
 
 @Component({
   selector: 'app-pending-vacations',

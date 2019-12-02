@@ -1,0 +1,45 @@
+<app-header></app-header>
+<div class="forma">
+    <h1 class="title">Dodavanje novog admina</h1>
+    <form>
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-2 col-form-label">Ime</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="firstName"
+                    name="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-2 col-form-label">Prezime</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastName" placeholder="Name" [(ngModel)]="lastName"
+                    name="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">E-mail</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="username" placeholder="Name" [(ngModel)]="username"
+                    name="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="address" class="col-sm-2 col-form-label">Adresa</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address" placeholder="Name" [(ngModel)]="address"
+                    name="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="clinic" class="col-sm-2 col-form-label">Naziv klinike</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="clinic" placeholder="Name" [(ngModel)]="clinic" name="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <button (click)="addAdmin()" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    </form>
+</div>

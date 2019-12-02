@@ -18,11 +18,11 @@ export class VacationService {
   getPending() {
     return this.http.get("http://localhost:9090/api/patient")
     .pipe(
-      map((response: Response) => {
+      map((response: any) => {
         const data = response.json();
         return data;
       }),
-      catchError((err: Response) => {
+      catchError((err: any) => {
         return throwError(JSON.parse(err.text()));
       })
     );
@@ -33,7 +33,7 @@ export class VacationService {
       id: id,
     })
     .pipe(
-      map((response: Response) => {
+      map((response: any) => {
         const data = response.json();
         return data;
       }),

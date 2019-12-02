@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../services/patient.service';
+import { PatientService } from '../services/patient/patient.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';

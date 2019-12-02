@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormsModule, EmailValidator } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
-import { jsonpFactory } from '@angular/http/src/http_module';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FirstLoginComponent } from '../first-login/first-login.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({

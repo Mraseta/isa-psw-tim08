@@ -77,6 +77,9 @@ public class AuthenticationController {
         headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(person1.getId()).toUri());
         return new ResponseEntity<>(new PersonDTO(person1), HttpStatus.CREATED);
     }
+
+
+
     @RequestMapping(value = "/refresh", method = RequestMethod.POST)
     public ResponseEntity<?> refreshAuthenticationToken(HttpServletRequest request) {
 
@@ -94,19 +97,5 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body(userTokenState);
         }
     }
-    /*@RequestMapping(value = "/change-password", method = RequestMethod.POST)
-    public ResponseEntity<?> changePassword(@RequestBody PasswordChanger passwordChanger) {
-        personService.changePassword(passwordChanger.oldPassword, passwordChanger.newPassword);
-
-        Map<String, String> result = new HashMap<>();
-        result.put("result", "success");
-        return ResponseEntity.accepted().body(result);
-    }
-
-    static class PasswordChanger {
-        public String oldPassword;
-        public String newPassword;
-    }*/
-
 
 }

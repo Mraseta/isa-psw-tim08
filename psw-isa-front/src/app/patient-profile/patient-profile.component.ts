@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject} from '@angular/core';
 
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JwtHelperService } from '@auth0/angular-jwt';

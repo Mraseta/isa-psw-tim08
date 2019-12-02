@@ -42,5 +42,17 @@ public class PatientController {
         return new ResponseEntity<>(patients,HttpStatus.OK);
     }
 
+    @RequestMapping(consumes = "application/json",value="/findPatients",method = RequestMethod.GET)
+    public ResponseEntity<?> findPatient(@RequestParam String name, @RequestParam String lastname,@RequestParam String jmbg){
+        List<Patient> patientList = personService.findPatients();
+        List<PatientDTO> patients = new ArrayList<>();
+        for(Patient p : patientList){
+            if(!p.getJmbg().equals(jmbg)&&jmbg!=null)continue;
+            if(!p.getLastName().equals(lastname)&&lastname!=null)continue;
+            if(!p.getFirstName().equals(name)&&name!=null)continue;
+            patients.add(new PatientDTO(p.getJmbg(),p.getFirstName(),p.getLastName()));
+        }
+        return new ResponseEntity<>(patients,HttpStatus.OK);
+    }
 
 }

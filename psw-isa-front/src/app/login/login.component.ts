@@ -3,7 +3,7 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt'
 
 
@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
         console.log(status + userType)
         if(userType === "P" && status !== "ACTIVE"){
           this.router.navigate(['/login']);
-        }else if((userType === "D" || userType === "N") && status === 'PENDING'){
+        }else if((userType === 'D' || userType === 'N' || userType === 'CCA' || userType === 'A') && status === 'PENDING'){
           console.log('dosao da rerutujem doktore i sestre')
-          this.router.navigate(['/firstLogin']);
+          this.router.navigate(['/changePassword']);
         }
         else{
           this.router.navigate(['/']);
