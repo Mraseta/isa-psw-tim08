@@ -2,6 +2,7 @@ package TIM8.medicalcenter.controller;
 
 import TIM8.medicalcenter.dto.AppointmentDTO;
 import TIM8.medicalcenter.dto.ClinicDTO;
+import TIM8.medicalcenter.dto.PersonDTO;
 import TIM8.medicalcenter.model.Appointment;
 import TIM8.medicalcenter.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,33 @@ public class AppointmentController {
             clinics.add(new ClinicDTO(a.getDoctor().getClinic()));
         }
         return new ResponseEntity<>(clinics, HttpStatus.OK);
+    }
+    @RequestMapping(consumes = "application/json",value="/findDoctors",method = RequestMethod.GET)
+    public ResponseEntity<?> findDoctors(@RequestParam String clinic,@RequestParam String date, @RequestParam String type){
+
+        SimpleDateFormat formatter6=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1;
+        try {
+            date1 = formatter6.parse(date);
+        }
+        catch(Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
+        List<Appointment> appointments = appointmentService.findAppointments(date1,type);
+
+        List<AppointmentDTO> apps = new ArrayList<>();
+        List<PersonDTO> doctors = new ArrayList<>();
+        for (Appointment a:appointments) {
+            apps.add(new AppointmentDTO(a));
+        }
+        for (AppointmentDTO a:apps) {
+            System.out.println(a.getDoctor().getFirstName());
+            if(doctors.contains(a.getDoctor().getClinic()))
+                continue;
+            if(!a.getDoctor().getClinic().getName().equals(clinic))
+                continue;
+            doctors.add(new PersonDTO(a.getDoctor()));
+        }
+        return new ResponseEntity<>(doctors, HttpStatus.OK);
     }
 }

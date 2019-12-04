@@ -28,30 +28,6 @@ public class DoctorController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @RequestMapping(consumes = "application/json",value="/getDoctors",method = RequestMethod.GET)
-    public ResponseEntity<?> findPatient(@RequestParam String date, @RequestParam String type){
 
-        SimpleDateFormat formatter6=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1=new Date();
-        try {
-            date1 = formatter6.parse(date);
-        }
-        catch(Exception e) {
-            return null;
-        }
-        List<Appointment> appointments = appointmentService.findAppointments(date1,type);
-
-        List<AppointmentDTO> apps = new ArrayList<>();
-        List<PersonDTO> doctors = new ArrayList<>();
-        for (Appointment a:appointments) {
-            apps.add(new AppointmentDTO(a));
-        }
-        for (AppointmentDTO a:apps) {
-            if(doctors.contains(a.getDoctor().getClinic()))
-                continue;
-            doctors.add(new PersonDTO(a.getDoctor()));
-        }
-        return new ResponseEntity<>(doctors, HttpStatus.OK);
-    }
 
 }
