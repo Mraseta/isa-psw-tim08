@@ -1,11 +1,8 @@
 package TIM8.medicalcenter.service;
 
-import TIM8.medicalcenter.dto.AdministratorDTO;
 import TIM8.medicalcenter.model.Security.Authority;
-import TIM8.medicalcenter.model.Users.Administrator;
 import TIM8.medicalcenter.model.Users.Patient;
 import TIM8.medicalcenter.model.Users.Person;
-import TIM8.medicalcenter.repository.ClinicRepository;
 import TIM8.medicalcenter.repository.PersonRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,10 +26,6 @@ public class PersonService implements UserDetailsService {
 
     @Autowired
     private PersonRepository personRepository;
-
-    @Autowired
-    private ClinicService clinicService;
-
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -77,27 +70,12 @@ public class PersonService implements UserDetailsService {
         return personRepository.save(person);
 
     }
-    public Person saveAdministrator(AdministratorDTO a,String status,String role){
-        Administrator admin = new Administrator();
-        admin.setFirstName(a.getFirstName());
-        admin.setLastName(a.getLastName());
-        admin.setUsername(a.getUsername());
-        admin.setPassword(passwordEncoder.encode("123"));
-        admin.setAddress(a.getAddress());
-        admin.setClinic(clinicService.findOneById(a.getClinic_id()));
-        admin.setStatus(status);
-        List<Authority> auth =authorityService.findByname(role);
-        admin.setAuthorities(auth);
-        admin.setEnabled(true);
-
-        return personRepository.save(admin);
-
-    }
     public void changePassword(String oldPassword, String newPassword) {
 
         Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();
 
         String username = currentUser.getName();
+        System.out.println("change password: username:" + username);
 
         if (authenticationManager != null) {
             LOGGER.debug("Re-authenticating user '" + username + "' for password change request.");
@@ -115,11 +93,9 @@ public class PersonService implements UserDetailsService {
         Person user = (Person) loadUserByUsername(username);
 
         user.setPassword(passwordEncoder.encode(newPassword));
-        user.setStatus("ACTIVE");
         personRepository.save(user);
-
+        System.out.println("Posle save user-a");
     }
-
 
 
 }

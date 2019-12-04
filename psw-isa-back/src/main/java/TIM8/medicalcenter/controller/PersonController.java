@@ -3,12 +3,15 @@ package TIM8.medicalcenter.controller;
 
 
 import TIM8.medicalcenter.dto.PersonDTO;
+
+import TIM8.medicalcenter.model.Users.Patient;
 import TIM8.medicalcenter.model.Users.Person;
 import TIM8.medicalcenter.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -28,7 +31,7 @@ public class PersonController {
         Person personRet = personService.findOneByUsername(person.getUsername());
         if(personRet==null)
             return null;
-        return new ResponseEntity<PersonDTO>(new PersonDTO(personRet),HttpStatus.OK);
+        return new ResponseEntity<>(new PersonDTO(personRet),HttpStatus.OK);
 
     }
     /*@RequestMapping(consumes = "application/json",value = "/login",method = RequestMethod.POST)
@@ -76,6 +79,4 @@ public class PersonController {
         return new ResponseEntity<>(patient, HttpStatus.OK);
 
     }*/
-
-
 }

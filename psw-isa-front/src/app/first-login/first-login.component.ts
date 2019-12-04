@@ -3,15 +3,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user/user.service';
+import { UserService } from '../services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt'
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  selector: 'app-first-login',
+  templateUrl: './first-login.component.html',
+  styleUrls: ['./first-login.component.css']
 })
-export class ChangePassword implements OnInit {
+export class FirstLoginComponent implements OnInit {
   password: string;
   password2: string;
   oldPassword: string;

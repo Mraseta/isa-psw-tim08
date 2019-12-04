@@ -14,12 +14,12 @@ export class PatientService {
   getAllPatients() {
     return this.http.get("http://localhost:9090/api/patient/getAllPatients")
     .pipe(
-      map((response: any) => {
-        const data = response;
+      map((response: Response) => {
+        const data = response.json();
         return data;
       }),
-      catchError((err: any) => {
-        return throwError(JSON.parse(err.text));
+      catchError((err: Response) => {
+        return throwError(JSON.parse(err.text()));
       })
     )
   }
