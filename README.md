@@ -38,6 +38,9 @@ Open cmd or terminal and navigate to psw-isa-front folder. When opened type *ng 
 
 ## Deployment
 
+https://intense-sea-08462.herokuapp.com
+https://isa-tim8.herokuapp.com/
+
 ## Authors
 Student 1: Stefan Micic 
 Student 2: Marko Raseta
